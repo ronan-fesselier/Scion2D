@@ -151,8 +151,8 @@ void TilesetDisplay::Draw()
 						auto& tileData = pActiveTool->GetTileData();
 						tileData.sprite.width = ( std::abs( maxCol - minCol ) + 1 ) * tileWidth;
 						tileData.sprite.height = ( std::abs( maxRow - minRow ) + 1 ) * tileHeight;
-						tileData.sprite.start_x = minCol;
-						tileData.sprite.start_y = minRow;
+						tileData.sprite.startX = minCol;
+						tileData.sprite.startY = minRow;
 
 						// We only want to do this when the selection changes!!
 						Scion::Core::GenerateUVsExt( tileData.sprite,

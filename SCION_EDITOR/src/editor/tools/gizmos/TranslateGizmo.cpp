@@ -111,7 +111,7 @@ void TranslateGizmo::Draw( Scion::Rendering::Camera2D* pCamera )
 								 xAxisSprite.width * xAxisTransform.scale.x,
 								 xAxisSprite.height * xAxisTransform.scale.y };
 
-		glm::vec4 xAxisUVs{ xAxisSprite.uvs.u, xAxisSprite.uvs.v, xAxisSprite.uvs.uv_width, xAxisSprite.uvs.uv_height };
+		glm::vec4 xAxisUVs{ xAxisSprite.uvs.u, xAxisSprite.uvs.v, xAxisSprite.uvs.uvWidth, xAxisSprite.uvs.uvHeight };
 
 		const auto pXAxisTexture = MAIN_REGISTRY().GetAssetManager().GetTexture( xAxisSprite.sTextureName );
 		if ( pXAxisTexture )
@@ -131,7 +131,7 @@ void TranslateGizmo::Draw( Scion::Rendering::Camera2D* pCamera )
 								 yAxisSprite.width * yAxisTransform.scale.x,
 								 yAxisSprite.height * yAxisTransform.scale.y };
 
-		glm::vec4 yAxisUVs{ yAxisSprite.uvs.u, yAxisSprite.uvs.v, yAxisSprite.uvs.uv_width, yAxisSprite.uvs.uv_height };
+		glm::vec4 yAxisUVs{ yAxisSprite.uvs.u, yAxisSprite.uvs.v, yAxisSprite.uvs.uvWidth, yAxisSprite.uvs.uvHeight };
 
 		const auto pYAxisTexture = MAIN_REGISTRY().GetAssetManager().GetTexture( yAxisSprite.sTextureName );
 		if ( pYAxisTexture )

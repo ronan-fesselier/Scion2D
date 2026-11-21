@@ -35,15 +35,15 @@ void ComponentSerializer::SerializeComponent( Scion::Filesystem::JSONSerializer&
 	serializer.StartNewObject( "sprite" )
 		.AddKeyValuePair( "width", sprite.width )
 		.AddKeyValuePair( "height", sprite.height )
-		.AddKeyValuePair( "startX", sprite.start_x )
-		.AddKeyValuePair( "startY", sprite.start_y )
+		.AddKeyValuePair( "startX", sprite.startX )
+		.AddKeyValuePair( "startY", sprite.startY )
 		.AddKeyValuePair( "layer", sprite.layer )
 		.AddKeyValuePair( "sTexture", sprite.sTextureName )
 		.StartNewObject( "uvs" )
 		.AddKeyValuePair( "u", sprite.uvs.u )
 		.AddKeyValuePair( "v", sprite.uvs.v )
-		.AddKeyValuePair( "uv_width", sprite.uvs.uv_width )
-		.AddKeyValuePair( "uv_height", sprite.uvs.uv_height )
+		.AddKeyValuePair( "uvWidth", sprite.uvs.uvWidth )
+		.AddKeyValuePair( "uvHeight", sprite.uvs.uvHeight )
 		.EndObject()
 		.StartNewObject( "color" )
 		.AddKeyValuePair( "r", sprite.color.r )
@@ -216,11 +216,11 @@ void ComponentSerializer::DeserializeComponent( const rapidjson::Value& jsonValu
 
 	sprite.uvs = UVs{ .u = jsonValue[ "uvs" ][ "u" ].GetFloat(),
 					  .v = jsonValue[ "uvs" ][ "v" ].GetFloat(),
-					  .uv_width = jsonValue[ "uvs" ][ "uv_width" ].GetFloat(),
-					  .uv_height = jsonValue[ "uvs" ][ "uv_height" ].GetFloat() };
+					  .uvWidth = jsonValue[ "uvs" ][ "uvWidth" ].GetFloat(),
+					  .uvHeight = jsonValue[ "uvs" ][ "uvHeight" ].GetFloat() };
 
-	sprite.start_x = jsonValue[ "startX" ].GetInt();
-	sprite.start_y = jsonValue[ "startY" ].GetInt();
+	sprite.startX = jsonValue[ "startX" ].GetInt();
+	sprite.startY = jsonValue[ "startY" ].GetInt();
 	sprite.layer = jsonValue[ "layer" ].GetInt(), sprite.bHidden = jsonValue[ "bHidden" ].GetBool();
 	sprite.sTextureName = jsonValue[ "sTexture" ].GetString();
 
@@ -365,15 +365,15 @@ void ComponentSerializer::SerializeComponent( Scion::Filesystem::LuaSerializer& 
 	serializer.StartNewTable( "sprite" )
 		.AddKeyValuePair( "width", sprite.width, true )
 		.AddKeyValuePair( "height", sprite.height, false )
-		.AddKeyValuePair( "startX", sprite.start_x, false )
-		.AddKeyValuePair( "startY", sprite.start_y, false )
+		.AddKeyValuePair( "startX", sprite.startX, false )
+		.AddKeyValuePair( "startY", sprite.startY, false )
 		.AddKeyValuePair( "layer", sprite.layer, false )
 		.AddKeyValuePair( "sTexture", sprite.sTextureName, true, false, false, true )
 		.StartNewTable( "uvs" )
 		.AddKeyValuePair( "u", sprite.uvs.u, false )
 		.AddKeyValuePair( "v", sprite.uvs.v, false )
-		.AddKeyValuePair( "uv_width", sprite.uvs.uv_width, false )
-		.AddKeyValuePair( "uv_height", sprite.uvs.uv_height, false, true )
+		.AddKeyValuePair( "uvWidth", sprite.uvs.uvWidth, false )
+		.AddKeyValuePair( "uvHeight", sprite.uvs.uvHeight, false, true )
 		.EndTable( false ) // UVS
 		.StartNewTable( "color" )
 		.AddKeyValuePair( "r", static_cast<int>( sprite.color.r ), false )
@@ -536,11 +536,11 @@ void ComponentSerializer::DeserializeComponent( const sol::table& table, SpriteC
 
 	sprite.uvs = UVs{ .u = table[ "uvs" ][ "u" ].get_or( 0.f ),
 					  .v = table[ "uvs" ][ "v" ].get_or( 0.f ),
-					  .uv_width = table[ "uvs" ][ "uv_width" ].get_or( 0.f ),
-					  .uv_height = table[ "uvs" ][ "uv_height" ].get_or( 0.f ) };
+					  .uvWidth = table[ "uvs" ][ "uvWidth" ].get_or( 0.f ),
+					  .uvHeight = table[ "uvs" ][ "uvHeight" ].get_or( 0.f ) };
 
-	sprite.start_x = table[ "startX" ].get_or( 0 );
-	sprite.start_y = table[ "startY" ].get_or( 0 );
+	sprite.startX = table[ "startX" ].get_or( 0 );
+	sprite.startY = table[ "startY" ].get_or( 0 );
 	sprite.layer = table[ "layer" ].get_or( 0 );
 	sprite.bHidden = table[ "bHidden" ].get_or( false );
 	sprite.sTextureName = table[ "sTexture" ].get_or( std::string{} );

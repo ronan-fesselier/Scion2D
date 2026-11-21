@@ -26,10 +26,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 0.5,
-                        "uv_height": 0.875
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.49609375,
+                        "uvHeight": 0.87109375
                     },
                     "color": {
                         "r": 255,
@@ -70,10 +70,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 0.5,
-                        "uv_height": 1.0
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.49609375,
+                        "uvHeight": 0.99609375
                     },
                     "color": {
                         "r": 255,
@@ -114,10 +114,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 1.0,
-                        "uv_height": 0.875
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.99609375,
+                        "uvHeight": 0.87109375
                     },
                     "color": {
                         "r": 255,
@@ -158,10 +158,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 1.0,
-                        "uv_height": 0.875
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.99609375,
+                        "uvHeight": 0.87109375
                     },
                     "color": {
                         "r": 255,
@@ -202,10 +202,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 1.0,
-                        "uv_height": 1.0
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.99609375,
+                        "uvHeight": 0.99609375
                     },
                     "color": {
                         "r": 255,
@@ -246,10 +246,10 @@
                     "layer": 0,
                     "sTexture": "dark_purple_bg",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 1.0,
-                        "uv_height": 1.0
+                        "u": 0.001953125,
+                        "v": 0.001953125,
+                        "uvWidth": 0.99609375,
+                        "uvHeight": 0.99609375
                     },
                     "color": {
                         "r": 255,

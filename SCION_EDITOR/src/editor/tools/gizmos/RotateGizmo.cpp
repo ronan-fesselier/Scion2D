@@ -94,7 +94,7 @@ void Scion::Editor::RotateGizmo::Draw( Scion::Rendering::Camera2D* pCamera )
 								 xAxisSprite.width * xAxisTransform.scale.x,
 								 xAxisSprite.height * xAxisTransform.scale.y };
 
-		glm::vec4 xAxisUVs{ xAxisSprite.uvs.u, xAxisSprite.uvs.v, xAxisSprite.uvs.uv_width, xAxisSprite.uvs.uv_height };
+		glm::vec4 xAxisUVs{ xAxisSprite.uvs.u, xAxisSprite.uvs.v, xAxisSprite.uvs.uvWidth, xAxisSprite.uvs.uvHeight };
 
 		const auto pXAxisTexture = MAIN_REGISTRY().GetAssetManager().GetTexture( xAxisSprite.sTextureName );
 		if ( pXAxisTexture )

@@ -47,8 +47,8 @@ function LoadEntity(def)
 				def.components.sprite.asset_name,
 				def.components.sprite.width,
 				def.components.sprite.height,
-				def.components.sprite.start_x,
-				def.components.sprite.start_y,
+				def.components.sprite.startX,
+				def.components.sprite.startY,
 				def.components.sprite.layer
 			)
 		)

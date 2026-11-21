@@ -388,7 +388,7 @@ void AssetDisplay::DrawSelectedAssets()
 							(ImTextureID)(intptr_t)textureID,
 							ImVec2{ m_AssetSize, m_AssetSize },
 							ImVec2{ sprite->uvs.u, sprite->uvs.v },
-							ImVec2{ sprite->uvs.u + sprite->uvs.uv_width, sprite->uvs.v + sprite->uvs.uv_height } );
+							ImVec2{ sprite->uvs.u + sprite->uvs.uvWidth, sprite->uvs.v + sprite->uvs.uvHeight } );
 					}
 					else
 					{

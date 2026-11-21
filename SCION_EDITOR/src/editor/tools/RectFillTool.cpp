@@ -184,7 +184,7 @@ void RectFillTool::DrawPreview( int dx, int dy )
 									sprite.width * transform.scale.x,
 									sprite.height * transform.scale.y };
 
-			glm::vec4 uvs{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uv_width, sprite.uvs.uv_height };
+			glm::vec4 uvs{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uvWidth, sprite.uvs.uvHeight };
 
 			m_pBatchRenderer->AddSprite(
 				tilePosition, uvs, pTexture->GetID(), PREVIEW_LAYER, glm::mat4{ 1.f }, sprite.color );

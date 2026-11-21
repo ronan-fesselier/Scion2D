@@ -87,7 +87,7 @@ void TileTool::DrawMouseSprite()
 						sprite.width * transform.scale.x,
 						sprite.height * transform.scale.y };
 
-	glm::vec4 uvs{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uv_width, sprite.uvs.uv_height };
+	glm::vec4 uvs{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uvWidth, sprite.uvs.uvHeight };
 
 	const auto pTexture = MAIN_REGISTRY().GetAssetManager().GetTexture( sprite.sTextureName );
 	if ( pTexture )
@@ -181,8 +181,8 @@ void TileTool::LoadSpriteTextureData( const std::string& textureName )
 											.width = m_MouseRect.x,
 											.height = m_MouseRect.y,
 											.color = Scion::Rendering::Color{ 255, 255, 255, 255 },
-											.start_x = 0,
-											.start_y = 0,
+											.startX = 0,
+											.startY = 0,
 											.layer = currentLayer };
 
 	auto pTexture = MAIN_REGISTRY().GetAssetManager().GetTexture( textureName );
@@ -197,10 +197,10 @@ const std::string& TileTool::GetSpriteTexture() const
 
 void TileTool::SetSpriteUVs( int startX, int startY )
 {
-	m_pMouseTile->sprite.start_x = startX;
-	m_pMouseTile->sprite.start_y = startY;
-	m_pMouseTile->sprite.uvs.u = startX * m_pMouseTile->sprite.uvs.uv_width;
-	m_pMouseTile->sprite.uvs.v = startY * m_pMouseTile->sprite.uvs.uv_height;
+	m_pMouseTile->sprite.startX = startX;
+	m_pMouseTile->sprite.startY = startY;
+	m_pMouseTile->sprite.uvs.u = startX * m_pMouseTile->sprite.uvs.uvWidth;
+	m_pMouseTile->sprite.uvs.v = startY * m_pMouseTile->sprite.uvs.uvHeight;
 }
 
 void TileTool::SetSpriteRect( const glm::vec2& spriteRect )

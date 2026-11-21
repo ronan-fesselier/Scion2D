@@ -72,7 +72,7 @@ void RenderSystem::Update( Scion::Core::ECS::Registry& registry, Scion::Renderin
 		}
 
 		glm::vec4 spriteRect{ transform.position.x, transform.position.y, sprite.width, sprite.height };
-		glm::vec4 uvRect{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uv_width, sprite.uvs.uv_height };
+		glm::vec4 uvRect{ sprite.uvs.u, sprite.uvs.v, sprite.uvs.uvWidth, sprite.uvs.uvHeight };
 
 		glm::mat4 model = Scion::Core::RSTModel( transform, sprite.width, sprite.height );
 

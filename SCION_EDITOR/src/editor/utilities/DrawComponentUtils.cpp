@@ -173,17 +173,17 @@ void DrawComponentsUtil::DrawImGuiComponent( Scion::Core::ECS::SpriteComponent& 
 		ImGui::ItemToolTip( "The index positions where we want to start our UV calculations." );
 		ImGui::ColoredLabel( "x", LABEL_SINGLE_SIZE, LABEL_RED );
 		ImGui::SameLine();
-		if ( ImGui::InputInt( "##start_x", &sprite.start_x, 1, 1 ) )
+		if ( ImGui::InputInt( "##startX", &sprite.startX, 1, 1 ) )
 		{
-			sprite.start_x = std::clamp( sprite.start_x, 0, 32 );
+			sprite.startX = std::clamp( sprite.startX, 0, 32 );
 			bChanged = true;
 		}
 		ImGui::SameLine();
 		ImGui::ColoredLabel( "y", LABEL_SINGLE_SIZE, LABEL_GREEN );
 		ImGui::SameLine();
-		if ( ImGui::InputInt( "##start_y", &sprite.start_y, 1, 1 ) )
+		if ( ImGui::InputInt( "##startY", &sprite.startY, 1, 1 ) )
 		{
-			sprite.start_y = std::clamp( sprite.start_y, 0, 32 );
+			sprite.startY = std::clamp( sprite.startY, 0, 32 );
 			bChanged = true;
 		}
 

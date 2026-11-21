@@ -81,17 +81,31 @@ glm::mat4 RSTModel( const TransformComponent& transform, float width, float heig
 
 void GenerateUVs( Scion::Core::ECS::SpriteComponent& sprite, int textureWidth, int textureHeight )
 {
-	sprite.uvs.uv_width = sprite.width / textureWidth;
-	sprite.uvs.uv_height = sprite.height / textureHeight;
+	// Store unpadded sizes
+	sprite.uvWidthUnpadded = sprite.width / static_cast<float>( textureWidth );
+	sprite.uvHeightUnpadded = sprite.height / static_cast<float>( textureHeight );
 
-	sprite.uvs.u = sprite.start_x * sprite.uvs.uv_width;
-	sprite.uvs.v = sprite.start_y * sprite.uvs.uv_height;
+	// Half a texel (in UV Space)
+	sprite.texelOffsetX = 0.5f / textureWidth;
+	sprite.texelOffsetY = 0.5f / textureHeight;
+
+	// Shrink width/height by 1 texel total ( both sides )
+	sprite.uvs.uvWidth = sprite.uvWidthUnpadded - sprite.texelOffsetX * 2.0f;
+	sprite.uvs.uvHeight = sprite.uvHeightUnpadded - sprite.texelOffsetY * 2.0f;
+
+	// Base UV and inset by half a text to prevent bleeding
+	float u0 = sprite.startX * sprite.uvWidthUnpadded + sprite.texelOffsetX;
+	float v0 = sprite.startY * sprite.uvHeightUnpadded + sprite.texelOffsetY;
+
+	// Store the uvs
+	sprite.uvs.u = u0;
+	sprite.uvs.v = v0;
 }
 
 void GenerateUVsExt( Scion::Core::ECS::SpriteComponent& sprite, int textureWidth, int textureHeight, float u, float v )
 {
-	sprite.uvs.uv_width = sprite.width / textureWidth;
-	sprite.uvs.uv_height = sprite.height / textureHeight;
+	sprite.uvs.uvWidth = sprite.width / textureWidth;
+	sprite.uvs.uvHeight = sprite.height / textureHeight;
 
 	sprite.uvs.u = u;
 	sprite.uvs.v = v;

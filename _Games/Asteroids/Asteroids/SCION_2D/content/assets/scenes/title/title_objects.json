@@ -30,10 +30,10 @@
                     "layer": 0,
                     "sTexture": "ScionAsteroidsLogo",
                     "uvs": {
-                        "u": 0.0,
-                        "v": 0.0,
-                        "uv_width": 1.0,
-                        "uv_height": 1.0
+                        "u": 0.00048828125,
+                        "v": 0.00048828125,
+                        "uvWidth": 0.9990234375,
+                        "uvHeight": 0.9990234375
                     },
                     "color": {
                         "r": 255,

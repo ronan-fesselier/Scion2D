@@ -14,14 +14,14 @@ std::string Scion::Core::ECS::SpriteComponent::to_string() const
 	   << std::boolalpha << "Texture Name: " << sTextureName << "\n"
 	   << "Width: " << width << "\n"
 	   << "Height: " << height << "\n"
-	   << "StartX: " << start_x << "\n"
-	   << "StartY: " << start_y << "\n"
+	   << "StartX: " << startX << "\n"
+	   << "StartY: " << startY << "\n"
 	   << "Layer: " << layer << "\n"
 	   << "UVs: \n\t"
 	   << "U: " << uvs.u << "\n\t"
 	   << "V: " << uvs.v << "\n\t"
-	   << "UvWidth: " << uvs.uv_width << "\n\t"
-	   << "UvHeight: " << uvs.uv_width << "\n"
+	   << "UvWidth: " << uvs.uvWidth << "\n\t"
+	   << "UvHeight: " << uvs.uvHeight << "\n"
 	   << "Color: \n\t"
 	   << "Red: " << color.r << "\n\t"
 	   << "Green: " << color.g << "\n\t"
@@ -37,31 +37,28 @@ void Scion::Core::ECS::SpriteComponent::CreateSpriteLuaBind( sol::state& lua )
 	auto& mainRegistry = MAIN_REGISTRY();
 	auto& assetManager = mainRegistry.GetAssetManager();
 
-	lua.new_usertype<Scion::Rendering::Color>( "Color",
-											  sol::call_constructor,
-											  sol::factories( []( GLubyte r, GLubyte g, GLubyte b, GLubyte a ) {
-												  return Scion::Rendering::Color{ .r = r, .g = g, .b = b, .a = a };
-											  } ),
-											  "r",
-											  &Scion::Rendering::Color::r,
-											  "g",
-											  &Scion::Rendering::Color::g,
-											  "b",
-											  &Scion::Rendering::Color::b,
-											  "a",
-											  &Scion::Rendering::Color::a );
+	// clang-format off
+	lua.new_usertype<Scion::Rendering::Color>(
+		"Color",
+		sol::call_constructor,
+		sol::factories( []( GLubyte r, GLubyte g, GLubyte b, GLubyte a ){
+		    return Scion::Rendering::Color{ .r = r, .g = g, .b = b, .a = a };
+		} ),
+		"r", &Scion::Rendering::Color::r,
+		"g", &Scion::Rendering::Color::g,
+		"b", &Scion::Rendering::Color::b,
+		"a", &Scion::Rendering::Color::a
+	);
 
-	lua.new_usertype<UVs>( "UVs",
-						   sol::call_constructor,
-						   sol::factories( []( float u, float v ) { return UVs{ .u = u, .v = v }; } ),
-						   "u",
-						   &UVs::u,
-						   "v",
-						   &UVs::v,
-						   "uvWidth",
-						   &UVs::uv_width,
-						   "uvHeight",
-						   &UVs::uv_height );
+	lua.new_usertype<UVs>(
+		"UVs",
+		sol::call_constructor,
+		sol::factories( []( float u, float v ) { return UVs{ .u = u, .v = v }; } ),
+		"u", &UVs::u,
+		"v", &UVs::v,
+		"uvWidth", &UVs::uvWidth,
+		"uvHeight", &UVs::uvHeight
+	);
 
 	lua.new_usertype<SpriteComponent>(
 		"Sprite",
@@ -69,14 +66,14 @@ void Scion::Core::ECS::SpriteComponent::CreateSpriteLuaBind( sol::state& lua )
 		&entt::type_hash<SpriteComponent>::value,
 		sol::call_constructor,
 		sol::factories(
-			[]( const std::string& textureName, float width, float height, int start_x, int start_y, int layer ) {
+			[]( const std::string& textureName, float width, float height, int startX, int startY, int layer ) {
 				return SpriteComponent{ .sTextureName = textureName,
 										.width = width,
 										.height = height,
 										.uvs = UVs{},
 										.color = Scion::Rendering::Color{ 255, 255, 255, 255 },
-										.start_x = start_x,
-										.start_y = start_y,
+										.startX = startX,
+										.startY = startY,
 										.layer = layer };
 			} ),
 		"sTextureName",
@@ -86,9 +83,9 @@ void Scion::Core::ECS::SpriteComponent::CreateSpriteLuaBind( sol::state& lua )
 		"height",
 		&SpriteComponent::height,
 		"startX",
-		&SpriteComponent::start_x,
+		&SpriteComponent::startX,
 		"startY",
-		&SpriteComponent::start_y,
+		&SpriteComponent::startY,
 		"layer",
 		&SpriteComponent::layer,
 		"bHidden",
@@ -112,11 +109,13 @@ void Scion::Core::ECS::SpriteComponent::CreateSpriteLuaBind( sol::state& lua )
 		},
 		"inspectUVs",
 		[]( SpriteComponent& sprite ) {
-			sprite.uvs.u = sprite.start_x * sprite.uvs.uv_width;
-			sprite.uvs.v = sprite.start_y * sprite.uvs.uv_height;
+			sprite.uvs.u = sprite.startX * sprite.uvs.uvWidth;
+			sprite.uvs.v = sprite.startY * sprite.uvs.uvHeight;
 		},
 		"inspectX",
-		[]( SpriteComponent& sprite ) { sprite.uvs.u = sprite.start_x * sprite.uvs.uv_width; },
+		[]( SpriteComponent& sprite ) { sprite.uvs.u = sprite.startX * sprite.uvs.uvWidth; },
 		"inspectY",
-		[]( SpriteComponent& sprite ) { sprite.uvs.v = sprite.start_y * sprite.uvs.uv_height; } );
+		[]( SpriteComponent& sprite ) { sprite.uvs.v = sprite.startY * sprite.uvs.uvHeight; } );
+
+	// clang-format on
 }

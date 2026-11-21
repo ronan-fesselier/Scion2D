@@ -223,8 +223,8 @@ bool TiledMapImporter::ImportFromTMXFile( EditorSceneManager* pSceneManager, con
 					sprite.sTextureName = pTileset->sName;
 					sprite.width = pTileset->tileWidth;
 					sprite.height = pTileset->tileHeight;
-					sprite.start_x = startX;
-					sprite.start_y = startY;
+					sprite.startX = startX;
+					sprite.startY = startY;
 					sprite.layer = LAYER;
 
 					Scion::Core::GenerateUVs( sprite, pTexture->GetWidth(), pTexture->GetHeight() );
@@ -415,8 +415,8 @@ bool TiledMapImporter::ImportFromLuaFile( EditorSceneManager* pSceneManager, con
 						sprite.sTextureName = pTileset->sName;
 						sprite.width = pTileset->tileWidth;
 						sprite.height = pTileset->tileHeight;
-						sprite.start_x = startX;
-						sprite.start_y = startY;
+						sprite.startX = startX;
+						sprite.startY = startY;
 						sprite.layer = LAYER;
 
 						Scion::Core::GenerateUVs( sprite, pTexture->GetWidth(), pTexture->GetHeight() );

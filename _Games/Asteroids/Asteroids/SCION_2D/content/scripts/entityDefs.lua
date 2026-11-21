@@ -25,7 +25,7 @@ AsteroidDefs =
 				asset_name = "asteroid_big",
 				width = 112,
 				height = 80,
-				start_x = 0, start_y = 0,
+				startX = 0, startY = 0,
 				layer = 2
 			},
 			circle_collider = {
@@ -50,7 +50,7 @@ AsteroidDefs =
 				asset_name = "asteroid_small",
 				width = 32,
 				height = 32,
-				start_x = 0, start_y = 0,
+				startX = 0, startY = 0,
 				layer = 2
 			},
 			circle_collider = {
@@ -79,7 +79,7 @@ ProjectileDefs =
 				asset_name = "proj_1",
 				width = 32,
 				height = 32,
-				start_x = 0, start_y = 0,
+				startX = 0, startY = 0,
 				layer = 2
 			},
 			circle_collider = {

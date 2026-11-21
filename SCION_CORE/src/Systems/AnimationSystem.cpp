@@ -49,13 +49,15 @@ void AnimationSystem::Update( Scion::Core::ECS::Registry& registry, Scion::Rende
 
 		if ( animation.bVertical )
 		{
-			sprite.uvs.v = (animation.currentFrame + sprite.start_y) * sprite.uvs.uv_height;
-			sprite.uvs.u = sprite.start_x * sprite.uvs.uv_width;
+			sprite.uvs.v = ( animation.currentFrame + sprite.startY ) * sprite.uvHeightUnpadded + sprite.texelOffsetY;
+
+			sprite.uvs.u = sprite.startX * sprite.uvWidthUnpadded + sprite.texelOffsetX;
 		}
 		else
 		{
-			sprite.uvs.u = ( ( animation.currentFrame + sprite.start_x ) * sprite.uvs.uv_width );
-			sprite.uvs.v = sprite.start_y * sprite.uvs.uv_height;
+			sprite.uvs.u = ( animation.currentFrame + sprite.startX ) * sprite.uvWidthUnpadded + sprite.texelOffsetX;
+
+			sprite.uvs.v = sprite.startY * sprite.uvHeightUnpadded + sprite.texelOffsetY;
 		}
 	}
 }
